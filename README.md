@@ -8,3 +8,10 @@ Message Passing Interface for distributed systems
 
 * See:
  > http://selalib.gforge.inria.fr/install/ubuntu.html
+
+###Execution
+* Compile:
+ > make
+
+* Run:
+ > mpirun -np # demo

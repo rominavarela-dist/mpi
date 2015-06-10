@@ -1,5 +1,8 @@
+#include <iostream>
 #include <mpi.h>
 #define MASTER 0
+
+using namespace std;
 
 //nProcess, thisN, thisName
 int world_size,world_rank,name_len;
@@ -21,7 +24,7 @@ int main(int argc, char* argv[])
 
   //init
   if (world_rank == MASTER)
-    printf("\n[%d] HELLO FROM MASTER.\nThis is a barrier where we will distribut our arguments...", world_rank);
+    std::cout << "[" << world_rank << "]" << "HELLO FROM MASTER" << endl;
   MPI_Barrier(MPI_COMM_WORLD);
     init();
 
@@ -32,7 +35,7 @@ int main(int argc, char* argv[])
 
   //finalize
   if (world_rank == MASTER)
-      printf("\n[%d] GOODBYE FROM MASTER.\nAt this points everybody must have finished to work.", world_rank);
+    std::cout << "[" << world_rank << "]" << "GOODBYE FROM MASTER" << endl;
 
 	MPI_Finalize();
   return 0;
@@ -47,16 +50,16 @@ void init()
 
   if (world_rank == MASTER)
   {
-    printf("\n[%d] Simulate you have N-M tasks to do", world_rank);
-    printf("\n[%d] Give a #N to master:", world_rank);
+    std::cout << "[" << world_rank << "]" << "Let's say you have N-M tasks to do" << endl;
+    std::cout << "[" << world_rank << "]" << "Give #N:" << endl;
 		scanf("%d",&N);
-    printf("\n[%d] Give a #M to master:", world_rank);
+    std::cout << "[" << world_rank << "]" << "Give #M:" << endl;
 		scanf("%d",&M);
 
 		buf[0]= N;
 		buf[1]= M;
 
-    printf("\n[%d] Let's distribute N-M tasks to slaves...", world_rank);
+    std::cout << "[" << world_rank << "]" << "Let's distribute N-M tasks to slaves..." << endl;
     int i;
     for (i = 0; i < world_size; i++)
       if (i != world_rank)
@@ -76,7 +79,9 @@ void init()
 **/
 void run()
 {
-  int initIndex= N + world_rank;
-  int endIndex= initIndex + (M/world_size);
-  printf("\n[%d] Slave runs from index %d to %d", world_rank,initIndex,endIndex);
+  int taskSize = (M/world_size);
+  int initIndex= taskSize * world_rank;
+  int endIndex= initIndex + taskSize;
+
+  std::cout << "[" << world_rank << "]" << "Slave runs from index " << initIndex << " to " << endIndex << endl;
 }
