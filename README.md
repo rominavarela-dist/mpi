@@ -22,9 +22,9 @@ Message Passing Interface for distributed systems
 
 ###SSH installation & configuration
 
-(be sure you can ping among your nodes)
+*(be sure you can ping among your nodes)*
 
-1. Follow this for every node:
+**Follow this for every node:**
 
  > sudo apt-get install ssh
 
@@ -36,7 +36,7 @@ Message Passing Interface for distributed systems
 
  > yes .. exit
 
-2. Follow this in the master:
+**Follow this in the master:**
 
  > ssh-keygen -t rsa
 
@@ -48,10 +48,13 @@ Message Passing Interface for distributed systems
 
  > yes ... exit
 
-3. Follow this for each slave:
+**Follow this for each slave:**
 
  > cd ~/.ssh
 
  > cat id_rsa.pu >> authorized_keys
+
+**See:**
+ > https://www.youtube.com/watch?v=0jQrhBplCBY&index=3&list=PLbx-k3N9Yr99WQVwlIdbWdsVxi5ItGL14
 
 Now you should be able to log from master to slave without restrictions.
