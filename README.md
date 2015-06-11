@@ -1,15 +1,7 @@
 # mpi
 Message Passing Interface for distributed systems
 
-##OpenMPIDemo
-###OpenMPI linux installation (ubuntu)
-* Run:
- > sudo apt-get install libopenmpi-dev openmpi-bin libhdf5-openmpi-dev
-
-* See:
- > http://selalib.gforge.inria.fr/install/ubuntu.html
-
-###Execution
+##EXECUTION
 * Compile:
  > make
 
@@ -19,11 +11,20 @@ Message Passing Interface for distributed systems
 * Run (# machines):
  > mpirun -hostfile host_file demo
 
-##SSH brief tutorial
+##BE READY
+
+###OpenMPI linux installation (ubuntu)
+* Run:
+ > sudo apt-get install libopenmpi-dev openmpi-bin libhdf5-openmpi-dev
+
+* See:
+ > http://selalib.gforge.inria.fr/install/ubuntu.html
+
+###SSH installation & configuration
 
 (be sure you can ping among your nodes)
 
-###Follow this for every node:
+1. Follow this for every node:
 
  > sudo apt-get install ssh
 
@@ -35,7 +36,7 @@ Message Passing Interface for distributed systems
 
  > yes .. exit
 
-###Follow this in the master:
+2. Follow this in the master:
 
  > ssh-keygen -t rsa
 
@@ -47,7 +48,7 @@ Message Passing Interface for distributed systems
 
  > yes ... exit
 
-###Follow this for each slave:
+3. Follow this for each slave:
 
  > cd ~/.ssh
 
