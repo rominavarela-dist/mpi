@@ -13,5 +13,8 @@ Message Passing Interface for distributed systems
 * Compile:
  > make
 
-* Run:
+* Run (# processes):
  > mpirun -np # demo
+
+* Run (# machines):
+ > mpirun -hostfile host_file demo
