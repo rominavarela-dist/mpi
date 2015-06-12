@@ -11,6 +11,10 @@ Message Passing Interface for distributed systems
 * Run (# machines):
  > mpirun -hostfile host_file demo
 
+ > mpirun --mca btl_tcp_if_include x.x.x.0/24 -hostfile host_file demo
+ 
+*see: http://stackoverflow.com/questions/8230027/mpi-barrier-doesnt-function-properly*
+
 ##BE READY
 
 ###OpenMPI linux installation (ubuntu)
