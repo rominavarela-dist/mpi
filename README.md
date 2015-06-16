@@ -1,11 +1,11 @@
-# mpi
+# MPI
 Message Passing Interface for distributed systems
 
-##COMPILE
+##Compile
 
  > make
 
-##RUN
+##Run
 
 * number-of processes:
  > mpirun -np # demo
@@ -20,7 +20,7 @@ Message Passing Interface for distributed systems
 
 ---
 
-##BE READY
+##Be Ready
 
 ###OpenMPI linux installation (ubuntu)
 * Run:
