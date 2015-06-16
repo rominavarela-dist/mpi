@@ -20,7 +20,7 @@ int main(int argc, char* argv[])
 
   	//init
   	MPI_Barrier(MPI_COMM_WORLD);
-    		std::cout << "[" << world_rank << "]" << "HELLO" << endl;
+    		std::cout << "[" << world_rank << "]" << "Hello World!" << endl;
 
   	MPI_Finalize();
   	return 0;

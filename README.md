@@ -1,19 +1,24 @@
 # mpi
 Message Passing Interface for distributed systems
 
-##EXECUTION
-* Compile:
+##COMPILE
+
  > make
 
-* Run (# processes):
+##RUN
+
+* number-of processes:
  > mpirun -np # demo
 
-* Run (# machines):
+* connected machines:
+
  > mpirun -hostfile host_file demo
 
  > mpirun --mca btl_tcp_if_include x.x.x.0/24 -hostfile host_file demo
- 
+
 *see: http://stackoverflow.com/questions/8230027/mpi-barrier-doesnt-function-properly*
+
+---
 
 ##BE READY
 
@@ -28,7 +33,7 @@ Message Passing Interface for distributed systems
 
 *(be sure you can ping among your nodes)*
 
-**Follow this for every node:**
+**For every node:**
 
  > sudo apt-get install ssh
 
@@ -40,7 +45,7 @@ Message Passing Interface for distributed systems
 
  > yes .. exit
 
-**Follow this in the master:**
+**For master:**
 
  > ssh-keygen -t rsa
 
@@ -52,7 +57,7 @@ Message Passing Interface for distributed systems
 
  > yes ... exit
 
-**Follow this for each slave:**
+**For each slave:**
 
  > cd ~/.ssh
 
