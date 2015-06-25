@@ -1,11 +1,11 @@
 # MPI
 Message Passing Interface for distributed systems
 
-##Compile
+**Compile**
 
  > make
 
-##Run
+**Run**
 
 * number-of processes:
  > mpirun -np # demo
@@ -20,7 +20,7 @@ Message Passing Interface for distributed systems
 
 ---
 
-##Be Ready
+###Be Ready
 
 **Choose OpenMPI or MPICH**
 
@@ -46,7 +46,7 @@ Message Passing Interface for distributed systems
 
  > http://www.cse.cuhk.edu.hk/blogel/deploy.html
 
-###SSH installation & configuration
+**SSH installation & configuration**
 
 *(be sure you can ping among your nodes)*
 
