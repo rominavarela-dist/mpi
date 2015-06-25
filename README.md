@@ -22,18 +22,35 @@ Message Passing Interface for distributed systems
 
 ##Be Ready
 
-###OpenMPI linux installation (ubuntu)
+**Choose OpenMPI or MPICH**
+
+*OpenMPI linux installation (ubuntu)*
+
 * Run:
  > sudo apt-get install libopenmpi-dev openmpi-bin libhdf5-openmpi-dev
 
 * See:
  > http://selalib.gforge.inria.fr/install/ubuntu.html
 
+*MPICH linux installation (ubuntu)*
+
+* Run:
+ > sudo apt-add-repository ppa:paulromano/staging
+
+ > sudo apt-get update
+ 
+ > sudo apt-get install mpich libmpich-dev
+
+* See:
+ > https://mit-crpg.github.io/openmc/usersguide/install.html
+
+ > http://www.cse.cuhk.edu.hk/blogel/deploy.html
+
 ###SSH installation & configuration
 
 *(be sure you can ping among your nodes)*
 
-**For every node:**
+*For every node:*
 
  > sudo apt-get install ssh
 
@@ -45,7 +62,7 @@ Message Passing Interface for distributed systems
 
  > yes .. exit
 
-**For master:**
+*For master:*
 
  > ssh-keygen -t rsa
 
@@ -57,7 +74,7 @@ Message Passing Interface for distributed systems
 
  > yes ... exit
 
-**For each slave:**
+*For each slave:*
 
  > cd ~/.ssh
 
