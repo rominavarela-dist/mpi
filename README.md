@@ -24,7 +24,7 @@ Message Passing Interface for distributed systems
 
 **Choose OpenMPI or MPICH**
 
-*OpenMPI linux installation (ubuntu)*
+**OpenMPI** *linux installation (ubuntu)*
 
 * Run:
  > sudo apt-get install libopenmpi-dev openmpi-bin libhdf5-openmpi-dev
@@ -32,7 +32,7 @@ Message Passing Interface for distributed systems
 * See:
  > http://selalib.gforge.inria.fr/install/ubuntu.html
 
-*MPICH linux installation (ubuntu)*
+**MPICH** *linux installation (ubuntu)*
 
 * Run:
  
