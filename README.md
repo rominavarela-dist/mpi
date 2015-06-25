@@ -32,7 +32,7 @@ Message Passing Interface for distributed systems
 * See:
  > http://selalib.gforge.inria.fr/install/ubuntu.html
 
-*MPICH linux installation (ubuntu)*
+*MPICH linux installation option 1 (ubuntu)*
 
 * Run:
  > sudo apt-add-repository ppa:paulromano/staging
@@ -43,6 +43,27 @@ Message Passing Interface for distributed systems
 
 * See:
  > https://mit-crpg.github.io/openmc/usersguide/install.html
+ 
+*MPICH linux installation option 2 (ubuntu)*
+
+* Download http://www.mpich.org/downloads/
+
+* Decompress and go to decompressed root directory
+
+* Run:
+ > sudo ./configure --disable-f77 --disable-fc –disable-fortran
+
+ > make
+
+ > sudo make install
+ 
+ > sudo gedit ~/.bashrc
+ 
+ > add: export MPICC=/usr/local/bin/mpicc
+ 
+ > mpichversion
+
+* See:
 
  > http://www.cse.cuhk.edu.hk/blogel/deploy.html
 
