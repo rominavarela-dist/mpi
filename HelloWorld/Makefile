@@ -35,3 +35,6 @@ LDFLAGS += $(foreach lib,$(program_LIBRARIES),-l$(lib))
 ##########################################################
 all:
 	mpic++ $(CXXFLAGS) $(program_SRCS) $(LDFLAGS) $(CPPFLAGS) -o $(program_NAME)
+
+run:
+	mpirun --mca btl_tcp_if_include 10.0.1.0/24 -hostfile host_file demo
