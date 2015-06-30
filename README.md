@@ -40,6 +40,18 @@ Message Passing Interface for distributed systems
  
  > mpichversion
 
+* SSH Extra configuration:
+
+ - Add every neighborn to /etc/hosts
+ 
+ - Add all nodes to ~/.ssh/config
+
+Example config:
+
+    Host romina1-VirtualBox
+        Hostname 10.0.1.101
+        User romina1
+
 **SSH installation & configuration**
 
 *(be sure you can ping among your nodes)*
