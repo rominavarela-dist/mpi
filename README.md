@@ -24,7 +24,7 @@ Message Passing Interface for distributed systems
 
 **Choose OpenMPI or MPICH**
 
-*OpenMPI linux installation (ubuntu)*
+**OpenMPI** *linux installation (ubuntu)*
 
 * Run:
  > sudo apt-get install libopenmpi-dev openmpi-bin libhdf5-openmpi-dev
@@ -32,40 +32,13 @@ Message Passing Interface for distributed systems
 * See:
  > http://selalib.gforge.inria.fr/install/ubuntu.html
 
-*MPICH linux installation option 1 (ubuntu)*
+**MPICH** *linux installation (ubuntu)*
 
 * Run:
- > sudo apt-add-repository ppa:paulromano/staging
-
- > sudo apt-get update
  
  > sudo apt-get install mpich libmpich-dev
-
-* See:
- > https://mit-crpg.github.io/openmc/usersguide/install.html
- 
-*MPICH linux installation option 2 (ubuntu)*
-
-* Download http://www.mpich.org/downloads/
-
-* Decompress and go to decompressed root directory
-
-* Run:
- > sudo ./configure --disable-f77 --disable-fc –disable-fortran
-
- > make
-
- > sudo make install
- 
- > sudo gedit ~/.bashrc
- 
- > add: export MPICC=/usr/local/bin/mpicc
  
  > mpichversion
-
-* See:
-
- > http://www.cse.cuhk.edu.hk/blogel/deploy.html
 
 **SSH installation & configuration**
 
@@ -91,17 +64,9 @@ Message Passing Interface for distributed systems
 
 * For each node (including master it's self):
 
- > scp id_rsa.pub node@x.x.x.x:~/.ssh/id_rsa.pub
-
- > yes ... exit
-
-*For each slave:*
-
- > cd ~/.ssh
-
- > cat id_rsa.pu >> authorized_keys
+ > ssh-copy-id node@#.#.#.#
 
 **See:**
- > https://www.youtube.com/watch?v=0jQrhBplCBY&index=3&list=PLbx-k3N9Yr99WQVwlIdbWdsVxi5ItGL14
+ > https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys--2
 
 Now you should be able to log from master to slave without restrictions.
