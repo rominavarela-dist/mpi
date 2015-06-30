@@ -35,7 +35,7 @@ int main(int argc, char* argv[])
   MPI_Info info;
   MPI_Info_create(&info);
   MPI_Info_set(info,"add-hostfile","host_file");
-  MPI_Comm_spawn("slave", MPI_ARGV_NULL, 4,
+  MPI_Comm_spawn("./slave", MPI_ARGV_NULL, 4,
       info, 0, MPI_COMM_WORLD,
       &children, MPI_ERRCODES_IGNORE);
 
