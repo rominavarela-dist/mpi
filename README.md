@@ -22,63 +22,20 @@ Message Passing Interface for distributed systems
 
 ###Be Ready
 
-**Choose OpenMPI or MPICH**
+**1. Choose OpenMPI or MPICH**
 
-**OpenMPI** *linux installation (ubuntu)*
+ * OpenMPI
 
-* Run:
- > sudo apt-get install libopenmpi-dev openmpi-bin libhdf5-openmpi-dev
-
-* See:
- > http://selalib.gforge.inria.fr/install/ubuntu.html
-
-**MPICH** *linux installation (ubuntu)*
-
-* Run:
+     * Run:
  
- > sudo apt-get install mpich libmpich-dev
- 
- > mpichversion
+     > sudo apt-get install libopenmpi-dev openmpi-bin libhdf5-openmpi-dev
 
-* SSH Extra configuration:
+ * MPICH
 
- - Add every neighborn to /etc/hosts
- 
- - Add all nodes to ~/.ssh/config
+     * Follow: https://github.com/rominavarela-demo/ub-scripts/blob/master/mpi/mpich.md
 
-Example config:
+**2. Install and configure SSH**
 
-    Host romina1-VirtualBox
-        Hostname 10.0.1.101
-        User romina1
+ * Virtual Machines also follow: https://github.com/rominavarela-demo/ub-scripts/blob/master/ssh/vbox-network.md
 
-**SSH installation & configuration**
-
-*(be sure you can ping among your nodes)*
-
-*For every node:*
-
- > sudo apt-get install ssh
-
- > sudo apt-get install openssh-server
-
-* For each node (except self):
-
- > ssh node@x.x.x.x
-
- > yes .. exit
-
-*For master:*
-
- > ssh-keygen -t rsa
-
- > cd ~/.ssh
-
-* For each node (including master it's self):
-
- > ssh-copy-id node@#.#.#.#
-
-**See:**
- > https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys--2
-
-Now you should be able to log from master to slave without restrictions.
+ * Follow: https://github.com/rominavarela-demo/ub-scripts/blob/master/ssh/ssh.md
