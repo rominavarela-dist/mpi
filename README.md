@@ -26,9 +26,7 @@ Message Passing Interface for distributed systems
 
  * OpenMPI
 
-     * Run:
- 
-     > sudo apt-get install libopenmpi-dev openmpi-bin libhdf5-openmpi-dev
+     * Follow: https://github.com/rominavarela-demo/ub-scripts/blob/master/mpi/openmpi.md
 
  * MPICH
 
@@ -36,6 +34,6 @@ Message Passing Interface for distributed systems
 
 **2. Install and configure SSH**
 
- * Virtual Machines also follow: https://github.com/rominavarela-demo/ub-scripts/blob/master/ssh/vbox-network.md
+ * Virtual Machines first follow: https://github.com/rominavarela-demo/ub-scripts/blob/master/ssh/vbox-network.md
 
  * Follow: https://github.com/rominavarela-demo/ub-scripts/blob/master/ssh/ssh.md
