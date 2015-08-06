@@ -13,7 +13,7 @@ program_SRCS +=  $(foreach dir,$(program_SRC_DIRS),$(wildcard $(dir)*.cpp))
 ### -I ./include
 ###  directory with .h, .hpp
 ###  include<>
-program_INCLUDE_DIRS =
+program_INCLUDE_DIRS = /mirror/romina/openmpi/openmpi-1.8.7/install/include
 #  include
 CPPFLAGS += $(foreach includedir,$(program_INCLUDE_DIRS),-I$(includedir))
 
