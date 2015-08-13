@@ -35,3 +35,6 @@ LDFLAGS += $(foreach lib,$(program_LIBRARIES),-l$(lib))
 ##########################################################
 all:
 	mpic++ $(CXXFLAGS) $(program_SRCS) $(LDFLAGS) $(CPPFLAGS) -o $(program_NAME)
+
+run:
+	mpirun -hostfile host_file ./demo
