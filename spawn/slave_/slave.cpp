@@ -16,14 +16,14 @@ int name_len;
 
 void slave_work()
 {
-  std::cout << "[" << rank << "]" << "HELLO FROM SLAVE @ " << processor_name << endl;
+  std::cout << "[SLAVE-" << rank << "]" << "Hello @ " << processor_name << endl;
 
   n_children = MPI::COMM_WORLD.Get_size();
 
   if (rank == MASTER)
     MPI_Send(&n_children, 1, MPI_INT, 0, 0, parent);
 
-  std::cout << "[" << rank << "]" << "BYE BYE FROM SLAVE" << endl;
+  //std::cout << "[SLAVE-" << rank << "]" << "Bye bye" << endl;
 }
 
 /**
@@ -32,7 +32,8 @@ void slave_work()
 int main(int argc, char* argv[])
 {
   //init
-  MPI_Init(&argc, &argv);
+  int MPI_Init_err= MPI_Init(&argc, &argv);
+  //std::cout << "SLAVE-" << rank << "] Initialization code: " << MPI_Init_err << endl;
   rank = MPI::COMM_WORLD.Get_rank();
   parent = MPI::COMM_WORLD.Get_parent();
   MPI_Get_processor_name(processor_name, &name_len);
@@ -41,6 +42,7 @@ int main(int argc, char* argv[])
   slave_work();
 
   //finialize
-  MPI_Finalize();
+  int MPI_Fin_err=MPI_Finalize();
+  std::cout << "[SLAVE-"<< rank <<"] Init/Finalization code: " << MPI_Init_err << "/" << MPI_Fin_err << endl;
   return 0;
 }
