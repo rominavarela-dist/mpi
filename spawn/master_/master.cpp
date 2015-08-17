@@ -6,19 +6,29 @@
 using namespace std;
 
 //mpi
-int rank;
-int n_children;
-MPI_Comm children;
-
 char processor_name[MPI_MAX_PROCESSOR_NAME];
 int name_len;
 
-void master_work()
+int spawn()
 {
-  std::cout << "[" << rank << "]" << "HELLO FROM MASTER @ " << processor_name << endl;
-  MPI_Recv(&n_children, 1, MPI_INT, 0, 0, children, MPI_STATUS_IGNORE);
-  std::cout << "[" << rank << "]" << " Got " << n_children << " slaves..." << endl;
-  std::cout << "[" << rank << "]" << "BYE BYE FROM MASTER" << endl;
+  int n_children;
+  MPI_Comm children;
+  int n_procs = 2;
+  MPI_Status spawn_errs[n_procs];
+
+  MPI_Info info;
+  MPI_Info_create(&info);
+  MPI_Info_set(info,"hostfile","host_file");
+  MPI_Info_set(info,"wdir","/mirror/romina/workspace/demo/mpi/spawn");
+  MPI_Comm_spawn("slave", MPI_ARGV_NULL, n_procs,
+      info, 0, MPI_COMM_WORLD,
+      &children, MPI_ERRCODES_IGNORE);
+  MPI_Recv(&n_children, 1, MPI_INT, 0, 0, children, spawn_errs);
+  MPI_Comm_free(&children);
+
+  for(int i=0; i<n_children; i++)
+	std::cout << "[MASTER] Spawn#" << i << " Status:" << spawn_errs[i].MPI_ERROR << endl;
+  return n_children;
 }
 
 /**
@@ -27,23 +37,19 @@ void master_work()
 int main(int argc, char* argv[])
 {
   //init
-  MPI_Init(&argc, &argv);
-  rank = MPI::COMM_WORLD.Get_rank();
-  MPI_Get_processor_name(processor_name, &name_len);
-
-  //add hosts and spawn
-  MPI_Info info;
-  MPI_Info_create(&info);
-  MPI_Info_set(info,"add-hostfile","host_file");
-  MPI_Comm_spawn("./slave", MPI_ARGV_NULL, 4,
-      info, 0, MPI_COMM_WORLD,
-      &children, MPI_ERRCODES_IGNORE);
+  int MPI_Init_err= MPI_Init(&argc, &argv);
+  //std::cout << "^[MASTER] Initialization code: " << MPI_Init_err << endl;
+  MPI_Get_processor_name(processor_name, &name_len);  
 
   //work
-  master_work();
-  sleep(3);
+  std::cout << "[MASTER] Hello @ " << processor_name << endl;
+  for(int i=0; i<10; i++)
+	std::cout << "[MASTER] Spawn#" << i << " Got " << spawn() << " slaves..." << endl;
 
-  //finialize
-  MPI_Finalize();
+  //finalize
+  //std::cout << "[MASTER] Bye bye" << endl;
+  sleep(3);
+  int MPI_Fin_err= MPI_Finalize();
+  std::cout << "[MASTER] Init/Finalization code: " << MPI_Init_err << "/" << MPI_Fin_err << endl;
   return 0;
 }
