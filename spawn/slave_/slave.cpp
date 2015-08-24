@@ -21,7 +21,9 @@ void slave_work()
   n_children = MPI::COMM_WORLD.Get_size();
 
   if (rank == MASTER)
-    MPI_Send(&n_children, 1, MPI_INT, 0, 0, parent);
+    {MPI_Send(&n_children, 1, MPI_INT, 0, 0, parent);
+std::cout << "[SLAVE-" << rank << "]" << "Send OK" << endl;
+}
 
   //std::cout << "[SLAVE-" << rank << "]" << "Bye bye" << endl;
 }
@@ -42,7 +44,7 @@ int main(int argc, char* argv[])
   slave_work();
 
   //finialize
-  int MPI_Fin_err=MPI_Finalize();
+  int MPI_Fin_err= MPI_Finalize();
   std::cout << "[SLAVE-"<< rank <<"] Init/Finalization code: " << MPI_Init_err << "/" << MPI_Fin_err << endl;
   return 0;
 }
